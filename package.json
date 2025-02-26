@@ -2,7 +2,7 @@
   "name": "tree-sitter-webidl",
   "version": "0.1.0",
   "description": "Web IDL parser",
-  "repository": "github:tree-sitter/tree-sitter-webidl",
+  "repository": "github:endoqa/tree-sitter-webidl",
   "license": "MIT",
   "author": {
     "name": "xiaoshen",
