@@ -1,0 +1,2282 @@
+[
+  {
+    "type": "argument",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "default_dictionary",
+          "named": true
+        },
+        {
+          "type": "empty_sequence",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "argument_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "argument",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "async_iterable",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "argument_list",
+          "named": true
+        },
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "attribute_rest",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type_with_extended_attributes",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "boolean_literal",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "buffer_related_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "callback_interface",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "callback_interface_members",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "callback_interface_members",
+    "named": true,
+    "fields": {
+      "extended_attribute_list": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "extended_attribute_list",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "async_iterable",
+          "named": true
+        },
+        {
+          "type": "const",
+          "named": true
+        },
+        {
+          "type": "constructor",
+          "named": true
+        },
+        {
+          "type": "inherit_attribute",
+          "named": true
+        },
+        {
+          "type": "iterable",
+          "named": true
+        },
+        {
+          "type": "operation",
+          "named": true
+        },
+        {
+          "type": "readonly_member",
+          "named": true
+        },
+        {
+          "type": "readwrite_attribute",
+          "named": true
+        },
+        {
+          "type": "readwrite_maplike",
+          "named": true
+        },
+        {
+          "type": "readwrite_setlike",
+          "named": true
+        },
+        {
+          "type": "static_member",
+          "named": true
+        },
+        {
+          "type": "stringifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "callback_or_interface_or_mixin",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "callback_interface",
+          "named": true
+        },
+        {
+          "type": "interface",
+          "named": true
+        },
+        {
+          "type": "mixin",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "const",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "constructor",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "argument_list",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dictionary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "dictionary_members",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "inheritance",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dictionary_member",
+    "named": true,
+    "fields": {
+      "extended_attribute_list": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "extended_attribute_list",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "boolean_literal",
+          "named": true
+        },
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "default_dictionary",
+          "named": true
+        },
+        {
+          "type": "empty_sequence",
+          "named": true
+        },
+        {
+          "type": "float_literal",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "dictionary_members",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "dictionary_member",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "enum",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "enum_value_list",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "enum_value_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "extended_attribute",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "extended_attribute_arg_list",
+          "named": true
+        },
+        {
+          "type": "extended_attribute_ident",
+          "named": true
+        },
+        {
+          "type": "extended_attribute_ident_list",
+          "named": true
+        },
+        {
+          "type": "extended_attribute_named_arg_list",
+          "named": true
+        },
+        {
+          "type": "extended_attribute_no_args",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "extended_attribute_arg_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "argument_list",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "extended_attribute_ident",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "extended_attribute_ident_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "extended_attribute_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "extended_attribute",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "extended_attribute_named_arg_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "argument_list",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "extended_attribute_no_args",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "float_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "decimal",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "float_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "frozen_array_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "includes_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "inherit_attribute",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_rest",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "inheritance",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "integer_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "interface",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "inheritance",
+          "named": true
+        },
+        {
+          "type": "interface_members",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "interface_members",
+    "named": true,
+    "fields": {
+      "extended_attribute_list": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "extended_attribute_list",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "async_iterable",
+          "named": true
+        },
+        {
+          "type": "const",
+          "named": true
+        },
+        {
+          "type": "constructor",
+          "named": true
+        },
+        {
+          "type": "inherit_attribute",
+          "named": true
+        },
+        {
+          "type": "iterable",
+          "named": true
+        },
+        {
+          "type": "operation",
+          "named": true
+        },
+        {
+          "type": "readonly_member",
+          "named": true
+        },
+        {
+          "type": "readwrite_attribute",
+          "named": true
+        },
+        {
+          "type": "readwrite_maplike",
+          "named": true
+        },
+        {
+          "type": "readwrite_setlike",
+          "named": true
+        },
+        {
+          "type": "static_member",
+          "named": true
+        },
+        {
+          "type": "stringifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "iterable",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "maplike_rest",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mixin",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "mixin_members",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mixin_member",
+    "named": true,
+    "fields": {
+      "extended_attribute_list": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "extended_attribute_list",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_rest",
+          "named": true
+        },
+        {
+          "type": "const",
+          "named": true
+        },
+        {
+          "type": "regular_operation",
+          "named": true
+        },
+        {
+          "type": "stringifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mixin_members",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "mixin_member",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "namespace",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_rest",
+          "named": true
+        },
+        {
+          "type": "const",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "regular_operation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nullable_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "observable_array_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "operation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "regular_operation",
+          "named": true
+        },
+        {
+          "type": "special_operation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "partial",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "namespace",
+          "named": true
+        },
+        {
+          "type": "partial_dictionary",
+          "named": true
+        },
+        {
+          "type": "partial_interface",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "partial_dictionary",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "dictionary_members",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "partial_interface",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "partial_interface_members",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "partial_interface_members",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "async_iterable",
+          "named": true
+        },
+        {
+          "type": "const",
+          "named": true
+        },
+        {
+          "type": "inherit_attribute",
+          "named": true
+        },
+        {
+          "type": "iterable",
+          "named": true
+        },
+        {
+          "type": "operation",
+          "named": true
+        },
+        {
+          "type": "readonly_member",
+          "named": true
+        },
+        {
+          "type": "readwrite_attribute",
+          "named": true
+        },
+        {
+          "type": "readwrite_maplike",
+          "named": true
+        },
+        {
+          "type": "readwrite_setlike",
+          "named": true
+        },
+        {
+          "type": "static_member",
+          "named": true
+        },
+        {
+          "type": "stringifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "primitive_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "unrestricted_float_type",
+          "named": true
+        },
+        {
+          "type": "unsigned_integer_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "promise_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "readonly_member",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_rest",
+          "named": true
+        },
+        {
+          "type": "maplike_rest",
+          "named": true
+        },
+        {
+          "type": "setlike_rest",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "readwrite_attribute",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_rest",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "readwrite_maplike",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "maplike_rest",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "readwrite_setlike",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "setlike_rest",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "regular_operation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "argument_list",
+          "named": true
+        },
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sequence_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "setlike_rest",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "callback_or_interface_or_mixin",
+          "named": true
+        },
+        {
+          "type": "dictionary",
+          "named": true
+        },
+        {
+          "type": "enum",
+          "named": true
+        },
+        {
+          "type": "extended_attribute_list",
+          "named": true
+        },
+        {
+          "type": "includes_statement",
+          "named": true
+        },
+        {
+          "type": "namespace",
+          "named": true
+        },
+        {
+          "type": "partial",
+          "named": true
+        },
+        {
+          "type": "typedef",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "special",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "special_operation",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "regular_operation",
+          "named": true
+        },
+        {
+          "type": "special",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "static_member",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute_rest",
+          "named": true
+        },
+        {
+          "type": "regular_operation",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string_type",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "stringifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute_rest",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type_with_extended_attributes",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "extended_attribute_list",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "promise_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        },
+        {
+          "type": "union_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "typedef",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "type_with_extended_attributes",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "union_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "buffer_related_type",
+          "named": true
+        },
+        {
+          "type": "frozen_array_type",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nullable_type",
+          "named": true
+        },
+        {
+          "type": "observable_array_type",
+          "named": true
+        },
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "record_type",
+          "named": true
+        },
+        {
+          "type": "sequence_type",
+          "named": true
+        },
+        {
+          "type": "string_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "unrestricted_float_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "float_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "unsigned_integer_type",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "integer_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": "-Infinity",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": ";",
+    "named": false
+  },
+  {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
+    "type": "?",
+    "named": false
+  },
+  {
+    "type": "ArrayBuffer",
+    "named": false
+  },
+  {
+    "type": "BigInt64Array",
+    "named": false
+  },
+  {
+    "type": "BigUint64Array",
+    "named": false
+  },
+  {
+    "type": "ByteString",
+    "named": false
+  },
+  {
+    "type": "DOMString",
+    "named": false
+  },
+  {
+    "type": "DataView",
+    "named": false
+  },
+  {
+    "type": "Float16Array",
+    "named": false
+  },
+  {
+    "type": "Float32Array",
+    "named": false
+  },
+  {
+    "type": "Float64Array",
+    "named": false
+  },
+  {
+    "type": "FrozenArray",
+    "named": false
+  },
+  {
+    "type": "Infinity",
+    "named": false
+  },
+  {
+    "type": "Int16Array",
+    "named": false
+  },
+  {
+    "type": "Int32Array",
+    "named": false
+  },
+  {
+    "type": "Int8Array",
+    "named": false
+  },
+  {
+    "type": "NaN",
+    "named": false
+  },
+  {
+    "type": "ObservableArray",
+    "named": false
+  },
+  {
+    "type": "Promise",
+    "named": false
+  },
+  {
+    "type": "SharedArrayBuffer",
+    "named": false
+  },
+  {
+    "type": "USVString",
+    "named": false
+  },
+  {
+    "type": "Uint16Array",
+    "named": false
+  },
+  {
+    "type": "Uint32Array",
+    "named": false
+  },
+  {
+    "type": "Uint8Array",
+    "named": false
+  },
+  {
+    "type": "Uint8ClampedArray",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
+    "type": "any",
+    "named": false
+  },
+  {
+    "type": "async",
+    "named": false
+  },
+  {
+    "type": "attribute",
+    "named": false
+  },
+  {
+    "type": "bigint",
+    "named": false
+  },
+  {
+    "type": "boolean",
+    "named": false
+  },
+  {
+    "type": "byte",
+    "named": false
+  },
+  {
+    "type": "callback",
+    "named": false
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "extra": true
+  },
+  {
+    "type": "const",
+    "named": false
+  },
+  {
+    "type": "constructor",
+    "named": false
+  },
+  {
+    "type": "decimal",
+    "named": true
+  },
+  {
+    "type": "default_dictionary",
+    "named": true
+  },
+  {
+    "type": "deleter",
+    "named": false
+  },
+  {
+    "type": "dictionary",
+    "named": false
+  },
+  {
+    "type": "double",
+    "named": false
+  },
+  {
+    "type": "empty_sequence",
+    "named": true
+  },
+  {
+    "type": "enum",
+    "named": false
+  },
+  {
+    "type": "false",
+    "named": false
+  },
+  {
+    "type": "float",
+    "named": false
+  },
+  {
+    "type": "getter",
+    "named": false
+  },
+  {
+    "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "includes",
+    "named": false
+  },
+  {
+    "type": "inherit",
+    "named": false
+  },
+  {
+    "type": "integer",
+    "named": true
+  },
+  {
+    "type": "interface",
+    "named": false
+  },
+  {
+    "type": "iterable",
+    "named": false
+  },
+  {
+    "type": "long",
+    "named": false
+  },
+  {
+    "type": "maplike",
+    "named": false
+  },
+  {
+    "type": "mixin",
+    "named": false
+  },
+  {
+    "type": "namespace",
+    "named": false
+  },
+  {
+    "type": "null",
+    "named": false
+  },
+  {
+    "type": "object",
+    "named": false
+  },
+  {
+    "type": "octet",
+    "named": false
+  },
+  {
+    "type": "optional",
+    "named": false
+  },
+  {
+    "type": "or",
+    "named": false
+  },
+  {
+    "type": "partial",
+    "named": false
+  },
+  {
+    "type": "readonly",
+    "named": false
+  },
+  {
+    "type": "record",
+    "named": false
+  },
+  {
+    "type": "required",
+    "named": false
+  },
+  {
+    "type": "sequence",
+    "named": false
+  },
+  {
+    "type": "setlike",
+    "named": false
+  },
+  {
+    "type": "setter",
+    "named": false
+  },
+  {
+    "type": "short",
+    "named": false
+  },
+  {
+    "type": "static",
+    "named": false
+  },
+  {
+    "type": "string",
+    "named": true
+  },
+  {
+    "type": "stringifier",
+    "named": false
+  },
+  {
+    "type": "symbol",
+    "named": false
+  },
+  {
+    "type": "true",
+    "named": false
+  },
+  {
+    "type": "typedef",
+    "named": false
+  },
+  {
+    "type": "undefined",
+    "named": false
+  },
+  {
+    "type": "unrestricted",
+    "named": false
+  },
+  {
+    "type": "unsigned",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  }
+]

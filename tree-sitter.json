@@ -1,0 +1,35 @@
+{
+  "grammars": [
+    {
+      "name": "webidl",
+      "camelcase": "WebIDL",
+      "scope": "source.webidl",
+      "path": ".",
+      "file-types": null,
+      "injection-regex": "^webidl$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Web IDL parser",
+    "authors": [
+      {
+        "name": "xiaoshen",
+        "email": "xiaoshen@endoqa.net"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/endoqa/tree-sitter-webidl"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "kotlin": true
+  }
+}
