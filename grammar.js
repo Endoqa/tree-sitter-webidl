@@ -20,14 +20,12 @@ module.exports = grammar({
 
   extras: ($) => [$.comment, /[\s\uFEFF\u2060\u200B]/],
 
-
   word: ($) => $.identifier,
 
   rules: {
     source: ($) => repeat($._definition),
 
     identifier: ($) => /[_-]?[A-Za-z][0-9A-Za-z_-]*/,
-
 
     _definition: ($) =>
       seq(
@@ -39,7 +37,7 @@ module.exports = grammar({
           $.dictionary,
           $.enum,
           $.typedef,
-          $.includes_statement,
+          $.includes_statement
         )
       ),
 
@@ -47,30 +45,43 @@ module.exports = grammar({
       choice($.callback_interface, $.interface, $.mixin),
 
     callback_interface: ($) =>
-      seq("callback", "interface", $.identifier, $.callback_interface_members),
+      seq(
+        "callback",
+        "interface",
+        field("name", $.identifier),
+        field("body", $.callback_interface_members)
+      ),
 
     interface: ($) =>
       seq(
         "interface",
-        $.identifier,
+        field("name", $.identifier),
         optional($.inheritance),
-        $.interface_members,
+        field("body", $.interface_members)
       ),
 
-    mixin: ($) => seq("interface", "mixin", $.identifier, $.mixin_members),
+    mixin: ($) =>
+      seq(
+        "interface",
+        "mixin",
+        field("name", $.identifier),
+        field("body", $.mixin_members)
+      ),
 
-    inheritance: ($) => seq(":", $.identifier),
+    inheritance: ($) => seq(":", field("super", $.identifier)),
 
-    interface_members: ($) => seq("{", repeat($._interface_member), "}", ";"),
+    interface_members: ($) =>
+      seq("{", field("members", repeat($.interface_member)), "}", ";"),
 
     callback_interface_members: ($) =>
-      seq("{", repeat($._interface_member), "}", ";"),
+      seq("{", field("members", repeat($.interface_member)), "}", ";"),
 
-    mixin_members: ($) => seq("{", repeat($.mixin_member), "}", ";"),
+    mixin_members: ($) =>
+      seq("{", field("members", repeat($.mixin_member)), "}", ";"),
 
-    _interface_member: ($) =>
+    interface_member: ($) =>
       seq(
-        field("extended_attribute_list", optional($.extended_attribute_list)),
+        field("extended_attributes", optional($.extended_attribute_list)),
         choice(
           $.const,
           $.operation,
@@ -83,29 +94,29 @@ module.exports = grammar({
           $.readwrite_maplike,
           $.readwrite_setlike,
           $.inherit_attribute,
-          $.constructor,
+          $.constructor
         )
       ),
 
     mixin_member: ($) =>
       seq(
-        field("extended_attribute_list", optional($.extended_attribute_list)),
+        field("extended_attributes", optional($.extended_attribute_list)),
         choice(
           $.const,
           $.regular_operation,
           $.stringifier,
-          seq(optional("readonly"), $.attribute_rest),
+          seq(optional("readonly"), $.attribute_rest)
         )
       ),
 
     namespace: ($) =>
       seq(
         "namespace",
-        $.identifier,
+        field("name", $.identifier),
         "{",
         repeat($._namespace_member),
         "}",
-        ";",
+        ";"
       ),
 
     _namespace_member: ($) =>
@@ -117,10 +128,14 @@ module.exports = grammar({
       choice($.partial_interface, $.partial_dictionary, $.namespace),
 
     partial_interface: ($) =>
-      seq("interface", $.identifier, $.partial_interface_members),
+      seq(
+        "interface",
+        field("name", $.identifier),
+        field("body", $.partial_interface_members)
+      ),
 
     partial_interface_members: ($) =>
-      seq("{", repeat($._partial_interface_member), "}", ";"),
+      seq("{", field("members", repeat($._partial_interface_member)), "}", ";"),
 
     _partial_interface_member: ($) =>
       choice(
@@ -134,51 +149,80 @@ module.exports = grammar({
         $.readwrite_attribute,
         $.readwrite_maplike,
         $.readwrite_setlike,
-        $.inherit_attribute,
+        $.inherit_attribute
       ),
 
     dictionary: ($) =>
       seq(
         "dictionary",
-        $.identifier,
+        field("name", $.identifier),
         optional($.inheritance),
-        $.dictionary_members,
+        field("body", $.dictionary_members)
       ),
 
-    dictionary_members: ($) => seq("{", repeat($.dictionary_member), "}", ";"),
+    dictionary_members: ($) =>
+      seq("{", field("members", repeat($.dictionary_member)), "}", ";"),
 
     dictionary_member: ($) =>
       seq(
-        field("extended_attribute_list", optional($.extended_attribute_list)),
+        field("extended_attributes", optional($.extended_attribute_list)),
         seq(
           optional("required"),
-          $._type,
-          $.identifier,
-          optional(seq("=", $._default_value)),
-          ";",
+          field("type", $._type),
+          field("name", $.identifier),
+          optional(seq("=", field("default", $._default_value))),
+          ";"
         )
       ),
 
     partial_dictionary: ($) =>
-      seq("dictionary", $.identifier, $.dictionary_members),
+      seq("dictionary", field("name", $.identifier), field("body", $.dictionary_members)),
 
-    enum: ($) => seq("enum", $.identifier, "{", $.enum_value_list, "}", ";"),
+    enum: ($) =>
+      seq(
+        "enum",
+        field("name", $.identifier),
+        "{",
+        field("values", $.enum_value_list),
+        "}",
+        ";"
+      ),
 
-    enum_value_list: ($) => seq($.string, repeat(seq(",", $.string)), optional(",")),
+    enum_value_list: ($) =>
+      seq(
+        field("value", $.string),
+        repeat(seq(",", field("value", $.string))),
+        optional(",")
+      ),
 
+    typedef: ($) =>
+      seq(
+        "typedef",
+        field("type", $.type_with_extended_attributes),
+        field("name", $.identifier),
+        ";"
+      ),
 
+    type_with_extended_attributes: ($) =>
+      seq(optional($.extended_attribute_list), field("type", $._type)),
 
-    typedef: ($) => seq("typedef", $.type_with_extended_attributes, $.identifier, ";"),
-
-    type_with_extended_attributes: $ => seq(
-      optional($.extended_attribute_list),
-      $._type
-    ),
-
-    includes_statement: ($) => seq($.identifier, "includes", $.identifier, ";"),
+    includes_statement: ($) =>
+      seq(
+        field("target", $.identifier),
+        "includes",
+        field("includes", $.identifier),
+        ";"
+      ),
 
     const: ($) =>
-      seq("const", $._const_type, $.identifier, "=", $._const_value, ";"),
+      seq(
+        "const",
+        field("type", $._const_type),
+        field("name", $.identifier),
+        "=",
+        field("value", $._const_value),
+        ";"
+      ),
 
     _const_type: ($) => choice($.primitive_type, $.identifier),
 
@@ -197,44 +241,58 @@ module.exports = grammar({
 
     inherit_attribute: ($) => seq("inherit", $.attribute_rest),
 
-    attribute_rest: ($) => seq("attribute", $.type_with_extended_attributes, $.identifier, ";"),
+    attribute_rest: ($) =>
+      seq(
+        "attribute",
+        field("type", $.type_with_extended_attributes),
+        field("name", $.identifier),
+        ";"
+      ),
 
     regular_operation: ($) =>
       seq(
-        $._type,
-        optional($.identifier), // make the operation name optional
-        $.argument_list,
-        ";",
+        field("return_type", $._type),
+        field("name", optional($.identifier)),
+        field("arguments", $.argument_list),
+        ";"
       ),
 
-    operation: ($) => choice($.regular_operation, $.special_operation),
+    operation: ($) =>  choice($.regular_operation, $.special_operation),
 
-    special_operation: ($) => seq($.special, $.regular_operation),
+    special_operation: ($) =>
+      seq(
+        field("special", $.special),
+        field("operation", $.regular_operation)
+      ),
 
     special: ($) => choice("getter", "setter", "deleter"),
 
-    constructor: ($) => seq("constructor", $.argument_list, ";"),
+    constructor: ($) =>
+      seq("constructor", field("arguments", $.argument_list), ";"),
 
     argument_list: ($) =>
-      prec.right(PREC.ARG_LIST, seq("(", optional($.argument), ")")),
+      prec.right(
+        PREC.ARG_LIST,
+        seq("(", field("arguments", optional($.argument)), ")")
+      ),
 
     argument: ($) =>
       seq(
-        optional("optional"),
-        $._type,
-        $.identifier,
-        optional(seq("=", $._default_value)),
+        field("optional", optional("optional")),
+        field("type", $._type),
+        field("name", $.identifier),
+        optional(seq("=", field("default", $._default_value))),
         repeat(
           seq(
             ",",
             seq(
-              optional("optional"),
-              $._type,
-              $.identifier,
-              optional(seq("=", $._default_value)),
-            ),
-          ),
-        ),
+              field("optional", optional("optional")),
+              field("type", $._type),
+              field("name", $.identifier),
+              optional(seq("=", field("default", $._default_value)))
+            )
+          )
+        )
       ),
 
     _default_value: ($) =>
@@ -244,7 +302,7 @@ module.exports = grammar({
         $.empty_sequence,
         $.default_dictionary,
         "null",
-        "undefined",
+        "undefined"
       ),
 
     empty_sequence: ($) => "[]",
@@ -256,38 +314,56 @@ module.exports = grammar({
         choice(
           $.attribute_rest,
           seq(optional("readonly"), $.attribute_rest),
-          ";",
+          ";"
         ),
-        optional(";"),
+        optional(";")
       ),
 
-    static_member: ($) => seq("static", $._static_member_rest),
+    static_member: ($) =>
+      seq("static", field("body", $._static_member_rest)),
 
     _static_member_rest: ($) =>
       choice(seq(optional("readonly"), $.attribute_rest), $.regular_operation),
 
     iterable: ($) =>
-      seq("iterable", "<", $._type, optional(seq(",", $._type)), ">", ";"),
+      seq(
+        "iterable",
+        "<",
+        field("iterable_type", $._type),
+        optional(seq(",", field("iterable_value_type", $._type))),
+        ">",
+        ";"
+      ),
 
     async_iterable: ($) =>
       seq(
         "async",
         "iterable",
         "<",
-        $._type,
-        optional(seq(",", $._type)),
+        field("async_iterable_type", $._type),
+        optional(seq(",", field("async_iterable_value_type", $._type))),
         ">",
-        optional($.argument_list),
-        ";",
+        optional(field("arguments", $.argument_list)),
+        ";"
       ),
 
     readwrite_maplike: ($) => $.maplike_rest,
 
-    maplike_rest: ($) => seq("maplike", "<", $._type, ",", $._type, ">", ";"),
+    maplike_rest: ($) =>
+      seq(
+        "maplike",
+        "<",
+        field("key", $._type),
+        ",",
+        field("value", $._type),
+        ">",
+        ";"
+      ),
 
     readwrite_setlike: ($) => $.setlike_rest,
 
-    setlike_rest: ($) => seq("setlike", "<", $._type, ">", ";"),
+    setlike_rest: ($) =>
+      seq("setlike", "<", field("value", $._type), ">", ";"),
 
     _type: ($) =>
       prec(PREC.TYPE, choice($._single_type, $.union_type, $.promise_type)),
@@ -306,7 +382,7 @@ module.exports = grammar({
         "symbol",
         "any",
         "undefined",
-        $.nullable_type,
+        $.nullable_type
       ),
 
     union_type: ($) =>
@@ -314,11 +390,10 @@ module.exports = grammar({
         PREC.UNION,
         seq(
           "(",
-          $._single_type,
-          repeat1(seq("or", $._single_type)),
+          field("options", seq($._single_type, repeat1(seq("or", $._single_type)))),
           ")",
-          optional("?"),
-        ),
+          optional("?")
+        )
       ),
 
     primitive_type: ($) =>
@@ -328,47 +403,62 @@ module.exports = grammar({
         "boolean",
         "byte",
         "octet",
-        "bigint",
+        "bigint"
       ),
 
-    unsigned_integer_type: ($) =>
-      choice(seq("unsigned", $.integer_type), $.integer_type),
+    unsigned_integer_type: ($) => seq(
+      "unsigned",
+      field("type", $.integer_type)
+    ),
 
     integer_type: ($) =>
-      choice(
-        "short",
-        seq("long", optional("long"))
-      ),
+      choice("short", seq("long", optional("long"))),
 
-    unrestricted_float_type: ($) =>
-      choice(seq("unrestricted", $.float_type), $.float_type),
+    unrestricted_float_type: ($) => seq("unrestricted", $.float_type),
 
     float_type: ($) => choice("float", "double"),
 
     string_type: ($) => choice("ByteString", "DOMString", "USVString"),
 
     promise_type: ($) =>
-      prec.right(PREC.PROMISE, seq("Promise", "<", $._type, ">")),
+      prec.right(
+        PREC.PROMISE,
+        seq("Promise", "<", field("promise_type", $._type), ">")
+      ),
 
     record_type: ($) =>
       prec.right(
         PREC.RECORD,
-        seq("record", "<", $.string_type, ",", $._type, ">"),
+        seq(
+          "record",
+          "<",
+          field("key", $.string_type),
+          ",",
+          field("value", $._type),
+          ">"
+        )
       ),
 
     sequence_type: ($) =>
-      prec.right(PREC.SEQUENCE, seq("sequence", "<", $._type, ">")),
+      prec.right(
+        PREC.SEQUENCE,
+        seq("sequence", "<", field("sequence_type", $._type), ">")
+      ),
 
     frozen_array_type: ($) =>
-      prec.right(PREC.FROZEN_ARRAY, seq("FrozenArray", "<", $._type, ">")),
+      prec.right(
+        PREC.FROZEN_ARRAY,
+        seq("FrozenArray", "<", field("frozen_type", $._type), ">")
+      ),
 
     observable_array_type: ($) =>
       prec.right(
         PREC.OBSERVABLE_ARRAY,
-        seq("ObservableArray", "<", $._type, ">"),
+        seq("ObservableArray", "<", field("observable_type", $._type), ">")
       ),
 
-    nullable_type: ($) => prec(PREC.NULLABLE, seq($._single_type, "?")),
+    nullable_type: ($) =>
+      prec(PREC.NULLABLE, seq(field("type", $._single_type), "?")),
 
     buffer_related_type: ($) =>
       choice(
@@ -386,15 +476,15 @@ module.exports = grammar({
         "BigUint64Array",
         "Float16Array",
         "Float32Array",
-        "Float64Array",
+        "Float64Array"
       ),
 
     extended_attribute_list: ($) =>
       seq(
         "[",
-        $.extended_attribute,
-        repeat(seq(",", $.extended_attribute)),
-        "]",
+        field("attributes", $.extended_attribute),
+        repeat(seq(",", field("attributes", $.extended_attribute))),
+        "]"
       ),
 
     extended_attribute: ($) =>
@@ -403,34 +493,54 @@ module.exports = grammar({
         $.extended_attribute_arg_list,
         $.extended_attribute_ident,
         $.extended_attribute_ident_list,
-        $.extended_attribute_named_arg_list,
+        $.extended_attribute_named_arg_list
       ),
 
-    extended_attribute_no_args: ($) => $.identifier,
+    extended_attribute_no_args: ($) => field("name", $.identifier),
 
-    extended_attribute_arg_list: ($) => seq($.identifier, $.argument_list),
+    extended_attribute_arg_list: ($) =>
+      seq(
+        field("name", $.identifier),
+        field("arguments", $.argument_list)
+      ),
 
-    extended_attribute_ident: ($) => seq($.identifier, "=", $.identifier),
+    extended_attribute_ident: ($) =>
+      seq(
+        field("name", $.identifier),
+        "=",
+        field("value", $.identifier)
+      ),
 
     extended_attribute_ident_list: ($) =>
       seq(
-        $.identifier,
+        field("name", $.identifier),
         "=",
         "(",
-        $.identifier,
-        repeat(seq(",", $.identifier)),
-        ")",
+        field("values", $.identifier),
+        repeat(seq(",", field("values", $.identifier))),
+        ")"
       ),
 
     extended_attribute_named_arg_list: ($) =>
       prec.right(
         PREC.NAMED_ARG_LIST,
-        seq($.identifier, "=", $.identifier, $.argument_list),
+        seq(
+          field("name", $.identifier),
+          "=",
+          field("value", $.identifier),
+          field("arguments", $.argument_list)
+        )
       ),
 
-    integer: ($) => /-?([1-9][0-9]*|0[Xx][0-9A-Fa-f]+|0[0-7]*)/,
-    decimal: ($) => /-?(([0-9]+\.[0-9]*|[0-9]*\.[0-9]+)([Ee][+-]?[0-9]+)?|[0-9]+[Ee][+-]?[0-9]+)/,
+    integer: ($) =>
+      /-?([1-9][0-9]*|0[Xx][0-9A-Fa-f]+|0[0-7]*)/,
+
+    decimal: ($) =>
+      /-?(([0-9]+\.[0-9]*|[0-9]*\.[0-9]+)([Ee][+-]?[0-9]+)?|[0-9]+[Ee][+-]?[0-9]+)/,
+
     string: ($) => /"[^"]*"/,
-    comment: ($) => /\/\/.*|\/\*[^*]*(\*+[^/*][^*]*)*\*+\//,
+
+    comment: ($) =>
+      /\/\/.*|\/\*[^*]*(\*+[^/*][^*]*)*\*+\//
   },
 });
