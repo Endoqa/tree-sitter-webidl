@@ -1,3 +1,6 @@
+/// <reference types="tree-sitter-cli/dsl" />
+// @ts-check
+
 const PREC = {
   PAREN: -1,
   ASSIGN: 0,
@@ -12,10 +15,9 @@ const PREC = {
   NAMED_ARG_LIST: 9,
   ARG_LIST: 10,
   TYPE: 11,
+  OPERATION: 12,
 };
 
-/// <reference types="tree-sitter-cli/dsl" />
-// @ts-check
 module.exports = grammar({
   name: "webidl",
 
@@ -23,26 +25,42 @@ module.exports = grammar({
 
   word: ($) => $.identifier,
 
-  supertypes: ($) => [$.primitive_type, $.float_literal],
+  supertypes: ($) => [
+    $._definition,
+    $._interface_member_body,
+    $._mixin_member_body,
+    $._namespace_member,
+    $._partial_interface_member_body,
+    $._type,
+    $._single_type,
+    $.primitive_type,
+    $.float_literal,
+    $._const_type,
+    $._const_value,
+    $._default_value,
+    $._attribute,
+    $._operation,
+    $._extended_attribute,
+    $._static_member_body,
+  ],
 
   rules: {
     source: ($) => repeat($._definition),
 
     identifier: ($) => /[_-]?[A-Za-z][0-9A-Za-z_-]*/,
 
+    // Definitions
     _definition: ($) =>
-      seq(
-        choice(
-          $.callback_interface,
-          $.interface,
-          $.mixin,
-          $.namespace,
-          $._partial,
-          $.dictionary,
-          $.enum,
-          $.typedef,
-          $.includes_statement
-        )
+      choice(
+        $.callback_interface,
+        $.interface,
+        $.mixin,
+        $.namespace,
+        $._partial,
+        $.dictionary,
+        $.enum,
+        $.typedef,
+        $.includes_statement
       ),
 
     callback_interface: ($) =>
@@ -85,46 +103,41 @@ module.exports = grammar({
 
     interface_member: ($) =>
       seq(
-        field("member_attributes", optional($.extended_attribute_list)),
-        field(
-          "member",
-          choice(
-            $.const,
-            $._operation,
-            $.stringifier,
-            $.static_member,
-            $.iterable,
-            $.async_iterable,
-            $.readonly_member,
-            $.readwrite_attribute,
-            $._readwrite_maplike,
-            $._readwrite_setlike,
-            $.inherit_attribute,
-            $.constructor
-          )
-        )
+        field("attributes", optional($.extended_attribute_list)),
+        field("member", $._interface_member_body)
+      ),
+
+    // Supertype for interface member bodies
+    _interface_member_body: ($) =>
+      choice(
+        $.const,
+        $._operation,
+        $.stringifier,
+        $.static_member,
+        $.iterable,
+        $.async_iterable,
+        $._attribute,
+        $._maplike,
+        $._setlike,
+        $.constructor
       ),
 
     mixin_member: ($) =>
       seq(
-        field("member_attributes", optional($.extended_attribute_list)),
-        field(
-          "member",
-          choice(
-            $.const,
-            $._operation,
-            $.stringifier,
-            $.static_member,
-            $.iterable,
-            $.async_iterable,
-            $.readonly_member,
-            $.readwrite_attribute,
-            $._readwrite_maplike,
-            $._readwrite_setlike,
-            $.inherit_attribute,
-            $.constructor
-          )
-        )
+        field("attributes", optional($.extended_attribute_list)),
+        field("member", $._mixin_member_body)
+      ),
+
+    // Supertype for mixin member bodies
+    _mixin_member_body: ($) =>
+      choice(
+        $.const,
+        $._operation,
+        $.stringifier,
+        $.static_member,
+        $._attribute,
+        $._maplike,
+        $._setlike
       ),
 
     namespace: ($) =>
@@ -139,7 +152,7 @@ module.exports = grammar({
       ),
 
     _namespace_member: ($) =>
-      choice($.regular_operation, $.readonly_member, $.const),
+      choice($.regular_operation, $.attribute, $.const),  // Use the unified attribute rule
 
     _partial: ($) =>
       choice($.partial_interface, $.partial_dictionary, $.partial_namespace),
@@ -163,12 +176,18 @@ module.exports = grammar({
         "interface",
         field("name", $.identifier),
         "{",
-        field("members", repeat($._partial_interface_member)),
+        field("members", repeat($.partial_interface_member)),
         "}",
         ";"
       ),
 
-    _partial_interface_member: ($) =>
+    partial_interface_member: ($) =>
+      seq(
+        field("attributes", optional($.extended_attribute_list)),
+        field("member", $._partial_interface_member_body)
+      ),
+
+    _partial_interface_member_body: ($) =>
       choice(
         $.const,
         $._operation,
@@ -176,11 +195,9 @@ module.exports = grammar({
         $.static_member,
         $.iterable,
         $.async_iterable,
-        $.readonly_member,
-        $.readwrite_attribute,
-        $._readwrite_maplike,
-        $._readwrite_setlike,
-        $.inherit_attribute
+        $._attribute,
+        $._maplike,
+        $._setlike
       ),
 
     dictionary: ($) =>
@@ -197,14 +214,12 @@ module.exports = grammar({
 
     dictionary_member: ($) =>
       seq(
-        field("extended_attributes", optional($.extended_attribute_list)),
-        seq(
-          optional("required"),
-          field("type", $._type),
-          field("name", $.identifier),
-          optional(seq("=", field("default", $._default_value))),
-          ";"
-        )
+        field("attributes", optional($.extended_attribute_list)),
+        optional("required"),
+        field("type", $._type),
+        field("name", $.identifier),
+        optional(seq("=", field("default", $._default_value))),
+        ";"
       ),
 
     partial_dictionary: ($) =>
@@ -229,8 +244,8 @@ module.exports = grammar({
 
     _enum_value_list: ($) =>
       seq(
-        field("enumerators", $.string),
-        repeat(seq(",", field("enumerators", $.string))),
+        field("value", $.string),
+        repeat(seq(",", field("value", $.string))),
         optional(",")
       ),
 
@@ -250,7 +265,7 @@ module.exports = grammar({
       seq(
         field("target", $.identifier),
         "includes",
-        field("includes", $.identifier),
+        field("mixin", $.identifier), // Renamed for clarity
         ";"
       ),
 
@@ -272,36 +287,42 @@ module.exports = grammar({
 
     float_literal: ($) => choice($.decimal, "-Infinity", "Infinity", "NaN"),
 
-    readonly_member: ($) =>
-      seq("readonly", field("member", $._readonly_member_rest)),
+    // Attributes
+    _attribute: ($) => $.attribute, // Simplified attribute
 
-    _readonly_member_rest: ($) =>
-      choice($._attribute_rest, $.maplike_rest, $.setlike_rest),
-
-    readwrite_attribute: ($) => $._attribute_rest,
-
-    inherit_attribute: ($) => seq("inherit", $._attribute_rest),
-
-    _attribute_rest: ($) =>
+    attribute: ($) =>
       seq(
+        optional(field("inherit", "inherit")),  // "inherit" is just another modifier
+        optional(field("readonly", "readonly")),
         "attribute",
         field("type", $.type_with_extended_attributes),
         field("name", $.identifier),
         ";"
       ),
 
+
+    // Operations
     regular_operation: ($) =>
-      seq(
-        field("return_type", $._type),
-        field("name", optional($.identifier)),
-        field("arguments", $.argument_list),
-        ";"
+      prec(
+        PREC.OPERATION,
+        seq(
+          field("return_type", $._type),
+          field("name", optional($.identifier)),
+          field("arguments", $.argument_list),
+          ";"
+        )
       ),
 
     _operation: ($) => choice($.regular_operation, $.special_operation),
 
     special_operation: ($) =>
-      seq(field("special", $.special), field("operation", $.regular_operation)),
+      prec(
+        PREC.OPERATION,
+        seq(
+          field("special", $.special),
+          field("operation", $.regular_operation)
+        )
+      ),
 
     special: ($) => choice("getter", "setter", "deleter"),
 
@@ -309,15 +330,17 @@ module.exports = grammar({
       seq("constructor", field("arguments", $.argument_list), ";"),
 
     argument_list: ($) =>
-      seq("(", commaList(field("arguments", optional($.argument))), ")"),
+      seq("(", commaList(field("argument", optional($.argument))), ")"),
+
     argument: ($) =>
       seq(
-        field("optional", optional("optional")),
+        optional("optional"),
         field("type", $._type),
         field("name", $.identifier),
         optional(seq("=", field("default", $._default_value)))
       ),
 
+    // Default values
     _default_value: ($) =>
       choice(
         $._const_value,
@@ -325,7 +348,7 @@ module.exports = grammar({
         $.empty_sequence,
         $.default_dictionary,
         "null",
-        "undefined"
+        "undefined" //
       ),
 
     empty_sequence: ($) => "[]",
@@ -334,25 +357,23 @@ module.exports = grammar({
     stringifier: ($) =>
       seq(
         "stringifier",
-        choice(
-          $._attribute_rest,
-          seq(optional("readonly"), $._attribute_rest),
-          ";"
-        ),
+        choice($.attribute, ";"),  // Use the unified attribute
         optional(";")
       ),
 
-    static_member: ($) => seq("static", field("body", $._static_member_rest)),
+    // Static Members
+    static_member: ($) => seq("static", field("member", $._static_member_body)),
 
-    _static_member_rest: ($) =>
-      choice(seq(optional("readonly"), $._attribute_rest), $.regular_operation),
+    _static_member_body: ($) =>
+      choice($.attribute, $.regular_operation), // Use the unified attribute
 
+    // Iterables
     iterable: ($) =>
       seq(
         "iterable",
         "<",
-        field("iterable_type", $._type),
-        optional(seq(",", field("iterable_value_type", $._type))),
+        field("type", $._type),
+        optional(seq(",", field("value_type", $._type))),
         ">",
         ";"
       ),
@@ -362,30 +383,35 @@ module.exports = grammar({
         "async",
         "iterable",
         "<",
-        field("async_iterable_type", $._type),
-        optional(seq(",", field("async_iterable_value_type", $._type))),
+        field("type", $._type),
+        optional(seq(",", field("value_type", $._type))),
         ">",
         optional(field("arguments", $.argument_list)),
         ";"
       ),
 
-    _readwrite_maplike: ($) => $.maplike_rest,
+    // Maplike and Setlike
+    _maplike: ($) => $.maplike,   // Simplified maplike
+    _setlike: ($) => $.setlike, // Simplified setlike
 
-    maplike_rest: ($) =>
+
+    maplike: ($) =>
       seq(
+        optional(field("readonly", "readonly")),
         "maplike",
         "<",
-        field("key", $._type),
+        field("key_type", $._type),
         ",",
-        field("value", $._type),
+        field("value_type", $._type),
         ">",
         ";"
       ),
 
-    _readwrite_setlike: ($) => $.setlike_rest,
+    setlike: ($) =>
+      seq(optional(field("readonly", "readonly")), "setlike", "<", field("value_type", $._type), ">", ";"),
 
-    setlike_rest: ($) => seq("setlike", "<", field("value", $._type), ">", ";"),
 
+    // Types
     _type: ($) =>
       prec(PREC.TYPE, choice($._single_type, $.union_type, $.promise_type)),
 
@@ -401,9 +427,9 @@ module.exports = grammar({
         $.record_type,
         "object",
         "symbol",
+        $.nullable_type,
         "any",
-        "undefined",
-        $.nullable_type
+        "undefined"
       ),
 
     union_type: ($) =>
@@ -411,10 +437,7 @@ module.exports = grammar({
         PREC.UNION,
         seq(
           "(",
-          field(
-            "options",
-            seq($._single_type, repeat1(seq("or", $._single_type)))
-          ),
+          field("member_types", seq($._type, repeat1(seq("or", $._type)))),
           ")",
           optional("?")
         )
@@ -445,7 +468,7 @@ module.exports = grammar({
     promise_type: ($) =>
       prec.right(
         PREC.PROMISE,
-        seq("Promise", "<", field("promise_type", $._type), ">")
+        seq("Promise", "<", field("resolve_type", $._type), ">") // Consistent naming
       ),
 
     record_type: ($) =>
@@ -454,9 +477,9 @@ module.exports = grammar({
         seq(
           "record",
           "<",
-          field("key", $.string_type),
+          field("key_type", $.string_type),
           ",",
-          field("value", $._type),
+          field("value_type", $._type),
           ">"
         )
       ),
@@ -464,21 +487,20 @@ module.exports = grammar({
     sequence_type: ($) =>
       prec.right(
         PREC.SEQUENCE,
-        seq("sequence", "<", field("sequence_type", $._type), ">")
+        seq("sequence", "<", field("element_type", $._type), ">")
       ),
 
     frozen_array_type: ($) =>
       prec.right(
         PREC.FROZEN_ARRAY,
-        seq("FrozenArray", "<", field("frozen_type", $._type), ">")
+        seq("FrozenArray", "<", field("element_type", $._type), ">")
       ),
 
     observable_array_type: ($) =>
       prec.right(
         PREC.OBSERVABLE_ARRAY,
-        seq("ObservableArray", "<", field("observable_type", $._type), ">")
+        seq("ObservableArray", "<", field("element_type", $._type), ">")
       ),
-
     nullable_type: ($) =>
       prec(PREC.NULLABLE, seq(field("type", $._single_type), "?")),
 
@@ -501,13 +523,9 @@ module.exports = grammar({
         "Float64Array"
       ),
 
+    // Extended Attributes
     extended_attribute_list: ($) =>
-      seq(
-        "[",
-        field("attributes", $._extended_attribute),
-        repeat(seq(",", field("attributes", $._extended_attribute))),
-        "]"
-      ),
+      seq("[", commaList(field("attribute", $._extended_attribute)), "]"),
 
     _extended_attribute: ($) =>
       choice(
@@ -531,8 +549,7 @@ module.exports = grammar({
         field("name", $.identifier),
         "=",
         "(",
-        field("values", $.identifier),
-        repeat(seq(",", field("values", $.identifier))),
+        commaList(field("value", $.identifier)),
         ")"
       ),
 
@@ -542,11 +559,12 @@ module.exports = grammar({
         seq(
           field("name", $.identifier),
           "=",
-          field("value", $.identifier),
+          field("identifier", $.identifier),
           field("arguments", $.argument_list)
         )
       ),
 
+    // Literals
     integer: ($) => /-?([1-9][0-9]*|0[Xx][0-9A-Fa-f]+|0[0-7]*)/,
 
     decimal: ($) =>
@@ -554,14 +572,17 @@ module.exports = grammar({
 
     string: ($) => /"[^"]*"/,
 
-    comment: ($) => /\/\/.*|\/\*[^*]*(\*+[^/*][^*]*)*\*+\//,
+    comment: ($) =>
+      token(
+        choice(seq("//", /.*/), seq("/*", /[^*]*\*+(?:[^/*][^*]*\*+)*/, "/"))
+      ),
   },
 });
 
-function commaList(g) {
-  return seq(g, repeat(seq(",", g)));
+function commaList(rule) {
+  return seq(rule, repeat(seq(",", rule)));
 }
 
 function attribute_list($) {
-  return field("attribute_list", optional($.extended_attribute_list));
+  return field("attributes", optional($.extended_attribute_list));
 }

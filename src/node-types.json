@@ -1,5 +1,397 @@
 [
   {
+    "type": "_attribute",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "attribute",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_const_type",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "identifier",
+        "named": true
+      },
+      {
+        "type": "primitive_type",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_const_value",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "boolean_literal",
+        "named": true
+      },
+      {
+        "type": "float_literal",
+        "named": true
+      },
+      {
+        "type": "integer",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_default_value",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "_const_value",
+        "named": true
+      },
+      {
+        "type": "default_dictionary",
+        "named": true
+      },
+      {
+        "type": "empty_sequence",
+        "named": true
+      },
+      {
+        "type": "null",
+        "named": false
+      },
+      {
+        "type": "string",
+        "named": true
+      },
+      {
+        "type": "undefined",
+        "named": false
+      }
+    ]
+  },
+  {
+    "type": "_definition",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "callback_interface",
+        "named": true
+      },
+      {
+        "type": "dictionary",
+        "named": true
+      },
+      {
+        "type": "enum",
+        "named": true
+      },
+      {
+        "type": "includes_statement",
+        "named": true
+      },
+      {
+        "type": "interface",
+        "named": true
+      },
+      {
+        "type": "mixin",
+        "named": true
+      },
+      {
+        "type": "namespace",
+        "named": true
+      },
+      {
+        "type": "partial_dictionary",
+        "named": true
+      },
+      {
+        "type": "partial_interface",
+        "named": true
+      },
+      {
+        "type": "partial_namespace",
+        "named": true
+      },
+      {
+        "type": "typedef",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_extended_attribute",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "extended_attribute_arg_list",
+        "named": true
+      },
+      {
+        "type": "extended_attribute_ident",
+        "named": true
+      },
+      {
+        "type": "extended_attribute_ident_list",
+        "named": true
+      },
+      {
+        "type": "extended_attribute_named_arg_list",
+        "named": true
+      },
+      {
+        "type": "extended_attribute_no_args",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_interface_member_body",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "_attribute",
+        "named": true
+      },
+      {
+        "type": "_operation",
+        "named": true
+      },
+      {
+        "type": "async_iterable",
+        "named": true
+      },
+      {
+        "type": "const",
+        "named": true
+      },
+      {
+        "type": "constructor",
+        "named": true
+      },
+      {
+        "type": "iterable",
+        "named": true
+      },
+      {
+        "type": "maplike",
+        "named": true
+      },
+      {
+        "type": "setlike",
+        "named": true
+      },
+      {
+        "type": "static_member",
+        "named": true
+      },
+      {
+        "type": "stringifier",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_mixin_member_body",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "_attribute",
+        "named": true
+      },
+      {
+        "type": "_operation",
+        "named": true
+      },
+      {
+        "type": "const",
+        "named": true
+      },
+      {
+        "type": "maplike",
+        "named": true
+      },
+      {
+        "type": "setlike",
+        "named": true
+      },
+      {
+        "type": "static_member",
+        "named": true
+      },
+      {
+        "type": "stringifier",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_namespace_member",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "attribute",
+        "named": true
+      },
+      {
+        "type": "const",
+        "named": true
+      },
+      {
+        "type": "regular_operation",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_operation",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "regular_operation",
+        "named": true
+      },
+      {
+        "type": "special_operation",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_partial_interface_member_body",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "_attribute",
+        "named": true
+      },
+      {
+        "type": "_operation",
+        "named": true
+      },
+      {
+        "type": "async_iterable",
+        "named": true
+      },
+      {
+        "type": "const",
+        "named": true
+      },
+      {
+        "type": "iterable",
+        "named": true
+      },
+      {
+        "type": "maplike",
+        "named": true
+      },
+      {
+        "type": "setlike",
+        "named": true
+      },
+      {
+        "type": "static_member",
+        "named": true
+      },
+      {
+        "type": "stringifier",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_single_type",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "any",
+        "named": false
+      },
+      {
+        "type": "buffer_related_type",
+        "named": true
+      },
+      {
+        "type": "frozen_array_type",
+        "named": true
+      },
+      {
+        "type": "identifier",
+        "named": true
+      },
+      {
+        "type": "nullable_type",
+        "named": true
+      },
+      {
+        "type": "object",
+        "named": false
+      },
+      {
+        "type": "observable_array_type",
+        "named": true
+      },
+      {
+        "type": "primitive_type",
+        "named": true
+      },
+      {
+        "type": "record_type",
+        "named": true
+      },
+      {
+        "type": "sequence_type",
+        "named": true
+      },
+      {
+        "type": "string_type",
+        "named": true
+      },
+      {
+        "type": "symbol",
+        "named": false
+      },
+      {
+        "type": "undefined",
+        "named": false
+      }
+    ]
+  },
+  {
+    "type": "_static_member_body",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "attribute",
+        "named": true
+      },
+      {
+        "type": "regular_operation",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "_type",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "_single_type",
+        "named": true
+      },
+      {
+        "type": "promise_type",
+        "named": true
+      },
+      {
+        "type": "union_type",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "float_literal",
     "named": true,
     "subtypes": [
@@ -60,36 +452,8 @@
         "required": false,
         "types": [
           {
-            "type": "boolean_literal",
+            "type": "_default_value",
             "named": true
-          },
-          {
-            "type": "default_dictionary",
-            "named": true
-          },
-          {
-            "type": "empty_sequence",
-            "named": true
-          },
-          {
-            "type": "float_literal",
-            "named": true
-          },
-          {
-            "type": "integer",
-            "named": true
-          },
-          {
-            "type": "null",
-            "named": false
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "undefined",
-            "named": false
           }
         ]
       },
@@ -103,78 +467,12 @@
           }
         ]
       },
-      "optional": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "optional",
-            "named": false
-          }
-        ]
-      },
       "type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
@@ -185,7 +483,7 @@
     "type": "argument_list",
     "named": true,
     "fields": {
-      "arguments": {
+      "argument": {
         "multiple": true,
         "required": false,
         "types": [
@@ -211,134 +509,68 @@
           }
         ]
       },
-      "async_iterable_type": {
+      "type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
       },
-      "async_iterable_value_type": {
+      "value_type": {
         "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "any",
+            "type": "_type",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "attribute",
+    "named": true,
+    "fields": {
+      "inherit": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "inherit",
             "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
           {
             "type": "identifier",
             "named": true
-          },
+          }
+        ]
+      },
+      "readonly": {
+        "multiple": false,
+        "required": false,
+        "types": [
           {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
+            "type": "readonly",
             "named": false
-          },
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
           {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "type_with_extended_attributes",
             "named": true
           }
         ]
@@ -359,7 +591,7 @@
     "type": "callback_interface",
     "named": true,
     "fields": {
-      "attribute_list": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
@@ -426,11 +658,7 @@
         "required": true,
         "types": [
           {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
+            "type": "_const_type",
             "named": true
           }
         ]
@@ -440,15 +668,7 @@
         "required": true,
         "types": [
           {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "float_literal",
-            "named": true
-          },
-          {
-            "type": "integer",
+            "type": "_const_value",
             "named": true
           }
         ]
@@ -475,7 +695,7 @@
     "type": "dictionary",
     "named": true,
     "fields": {
-      "attribute_list": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
@@ -521,50 +741,22 @@
     "type": "dictionary_member",
     "named": true,
     "fields": {
-      "default": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "boolean_literal",
-            "named": true
-          },
-          {
-            "type": "default_dictionary",
-            "named": true
-          },
-          {
-            "type": "empty_sequence",
-            "named": true
-          },
-          {
-            "type": "float_literal",
-            "named": true
-          },
-          {
-            "type": "integer",
-            "named": true
-          },
-          {
-            "type": "null",
-            "named": false
-          },
-          {
-            "type": "string",
-            "named": true
-          },
-          {
-            "type": "undefined",
-            "named": false
-          }
-        ]
-      },
-      "extended_attributes": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
           {
             "type": "extended_attribute_list",
+            "named": true
+          }
+        ]
+      },
+      "default": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "_default_value",
             "named": true
           }
         ]
@@ -584,63 +776,7 @@
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
@@ -667,22 +803,12 @@
     "type": "enum",
     "named": true,
     "fields": {
-      "attribute_list": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
           {
             "type": "extended_attribute_list",
-            "named": true
-          }
-        ]
-      },
-      "enumerators": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "string",
             "named": true
           }
         ]
@@ -693,6 +819,16 @@
         "types": [
           {
             "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "string",
             "named": true
           }
         ]
@@ -779,7 +915,7 @@
           }
         ]
       },
-      "values": {
+      "value": {
         "multiple": true,
         "required": true,
         "types": [
@@ -795,28 +931,12 @@
     "type": "extended_attribute_list",
     "named": true,
     "fields": {
-      "attributes": {
+      "attribute": {
         "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "extended_attribute_arg_list",
-            "named": true
-          },
-          {
-            "type": "extended_attribute_ident",
-            "named": true
-          },
-          {
-            "type": "extended_attribute_ident_list",
-            "named": true
-          },
-          {
-            "type": "extended_attribute_named_arg_list",
-            "named": true
-          },
-          {
-            "type": "extended_attribute_no_args",
+            "type": "_extended_attribute",
             "named": true
           }
         ]
@@ -837,7 +957,7 @@
           }
         ]
       },
-      "name": {
+      "identifier": {
         "multiple": false,
         "required": true,
         "types": [
@@ -847,7 +967,7 @@
           }
         ]
       },
-      "value": {
+      "name": {
         "multiple": false,
         "required": true,
         "types": [
@@ -884,68 +1004,12 @@
     "type": "frozen_array_type",
     "named": true,
     "fields": {
-      "frozen_type": {
+      "element_type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
@@ -956,7 +1020,7 @@
     "type": "includes_statement",
     "named": true,
     "fields": {
-      "includes": {
+      "mixin": {
         "multiple": false,
         "required": true,
         "types": [
@@ -979,32 +1043,6 @@
     }
   },
   {
-    "type": "inherit_attribute",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "type_with_extended_attributes",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "integer_type",
     "named": true,
     "fields": {}
@@ -1013,7 +1051,7 @@
     "type": "interface",
     "named": true,
     "fields": {
-      "attribute_list": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
@@ -1059,70 +1097,22 @@
     "type": "interface_member",
     "named": true,
     "fields": {
-      "member": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "async_iterable",
-            "named": true
-          },
-          {
-            "type": "const",
-            "named": true
-          },
-          {
-            "type": "constructor",
-            "named": true
-          },
-          {
-            "type": "inherit_attribute",
-            "named": true
-          },
-          {
-            "type": "iterable",
-            "named": true
-          },
-          {
-            "type": "maplike_rest",
-            "named": true
-          },
-          {
-            "type": "readonly_member",
-            "named": true
-          },
-          {
-            "type": "readwrite_attribute",
-            "named": true
-          },
-          {
-            "type": "regular_operation",
-            "named": true
-          },
-          {
-            "type": "setlike_rest",
-            "named": true
-          },
-          {
-            "type": "special_operation",
-            "named": true
-          },
-          {
-            "type": "static_member",
-            "named": true
-          },
-          {
-            "type": "stringifier",
-            "named": true
-          }
-        ]
-      },
-      "member_attributes": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
           {
             "type": "extended_attribute_list",
+            "named": true
+          }
+        ]
+      },
+      "member": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_interface_member_body",
             "named": true
           }
         ]
@@ -1149,134 +1139,22 @@
     "type": "iterable",
     "named": true,
     "fields": {
-      "iterable_type": {
+      "type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
       },
-      "iterable_value_type": {
+      "value_type": {
         "multiple": false,
         "required": false,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
@@ -1284,137 +1162,35 @@
     }
   },
   {
-    "type": "maplike_rest",
+    "type": "maplike",
     "named": true,
     "fields": {
-      "key": {
+      "key_type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
       },
-      "value": {
+      "readonly": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "readonly",
+            "named": false
+          }
+        ]
+      },
+      "value_type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
@@ -1425,7 +1201,7 @@
     "type": "mixin",
     "named": true,
     "fields": {
-      "attribute_list": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
@@ -1461,70 +1237,22 @@
     "type": "mixin_member",
     "named": true,
     "fields": {
-      "member": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "async_iterable",
-            "named": true
-          },
-          {
-            "type": "const",
-            "named": true
-          },
-          {
-            "type": "constructor",
-            "named": true
-          },
-          {
-            "type": "inherit_attribute",
-            "named": true
-          },
-          {
-            "type": "iterable",
-            "named": true
-          },
-          {
-            "type": "maplike_rest",
-            "named": true
-          },
-          {
-            "type": "readonly_member",
-            "named": true
-          },
-          {
-            "type": "readwrite_attribute",
-            "named": true
-          },
-          {
-            "type": "regular_operation",
-            "named": true
-          },
-          {
-            "type": "setlike_rest",
-            "named": true
-          },
-          {
-            "type": "special_operation",
-            "named": true
-          },
-          {
-            "type": "static_member",
-            "named": true
-          },
-          {
-            "type": "stringifier",
-            "named": true
-          }
-        ]
-      },
-      "member_attributes": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
           {
             "type": "extended_attribute_list",
+            "named": true
+          }
+        ]
+      },
+      "member": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_mixin_member_body",
             "named": true
           }
         ]
@@ -1551,7 +1279,7 @@
     "type": "namespace",
     "named": true,
     "fields": {
-      "attribute_list": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
@@ -1566,15 +1294,7 @@
         "required": false,
         "types": [
           {
-            "type": "const",
-            "named": true
-          },
-          {
-            "type": "readonly_member",
-            "named": true
-          },
-          {
-            "type": "regular_operation",
+            "type": "_namespace_member",
             "named": true
           }
         ]
@@ -1600,56 +1320,8 @@
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
+            "type": "_single_type",
             "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
           }
         ]
       }
@@ -1659,68 +1331,12 @@
     "type": "observable_array_type",
     "named": true,
     "fields": {
-      "observable_type": {
+      "element_type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
@@ -1731,7 +1347,7 @@
     "type": "partial_dictionary",
     "named": true,
     "fields": {
-      "attribute_list": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
@@ -1767,7 +1383,7 @@
     "type": "partial_interface",
     "named": true,
     "fields": {
-      "attribute_list": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
@@ -1782,51 +1398,7 @@
         "required": false,
         "types": [
           {
-            "type": "async_iterable",
-            "named": true
-          },
-          {
-            "type": "const",
-            "named": true
-          },
-          {
-            "type": "inherit_attribute",
-            "named": true
-          },
-          {
-            "type": "iterable",
-            "named": true
-          },
-          {
-            "type": "maplike_rest",
-            "named": true
-          },
-          {
-            "type": "readonly_member",
-            "named": true
-          },
-          {
-            "type": "readwrite_attribute",
-            "named": true
-          },
-          {
-            "type": "regular_operation",
-            "named": true
-          },
-          {
-            "type": "setlike_rest",
-            "named": true
-          },
-          {
-            "type": "special_operation",
-            "named": true
-          },
-          {
-            "type": "static_member",
-            "named": true
-          },
-          {
-            "type": "stringifier",
+            "type": "partial_interface_member",
             "named": true
           }
         ]
@@ -1844,10 +1416,36 @@
     }
   },
   {
+    "type": "partial_interface_member",
+    "named": true,
+    "fields": {
+      "attributes": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "extended_attribute_list",
+            "named": true
+          }
+        ]
+      },
+      "member": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "_partial_interface_member_body",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "partial_namespace",
     "named": true,
     "fields": {
-      "attribute_list": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
@@ -1862,15 +1460,7 @@
         "required": false,
         "types": [
           {
-            "type": "const",
-            "named": true
-          },
-          {
-            "type": "readonly_member",
-            "named": true
-          },
-          {
-            "type": "regular_operation",
+            "type": "_namespace_member",
             "named": true
           }
         ]
@@ -1891,150 +1481,12 @@
     "type": "promise_type",
     "named": true,
     "fields": {
-      "promise_type": {
+      "resolve_type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "readonly_member",
-    "named": true,
-    "fields": {
-      "member": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "attribute",
-            "named": false
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "maplike_rest",
-            "named": true
-          },
-          {
-            "type": "setlike_rest",
-            "named": true
-          },
-          {
-            "type": "type_with_extended_attributes",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "type_with_extended_attributes",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "readwrite_attribute",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "type_with_extended_attributes",
+            "type": "_type",
             "named": true
           }
         ]
@@ -2045,7 +1497,7 @@
     "type": "record_type",
     "named": true,
     "fields": {
-      "key": {
+      "key_type": {
         "multiple": false,
         "required": true,
         "types": [
@@ -2055,68 +1507,12 @@
           }
         ]
       },
-      "value": {
+      "value_type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
@@ -2152,63 +1548,7 @@
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
@@ -2219,68 +1559,12 @@
     "type": "sequence_type",
     "named": true,
     "fields": {
-      "sequence_type": {
+      "element_type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
@@ -2288,71 +1572,25 @@
     }
   },
   {
-    "type": "setlike_rest",
+    "type": "setlike",
     "named": true,
     "fields": {
-      "value": {
+      "readonly": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "readonly",
+            "named": false
+          }
+        ]
+      },
+      "value_type": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
@@ -2369,47 +1607,7 @@
       "required": false,
       "types": [
         {
-          "type": "callback_interface",
-          "named": true
-        },
-        {
-          "type": "dictionary",
-          "named": true
-        },
-        {
-          "type": "enum",
-          "named": true
-        },
-        {
-          "type": "includes_statement",
-          "named": true
-        },
-        {
-          "type": "interface",
-          "named": true
-        },
-        {
-          "type": "mixin",
-          "named": true
-        },
-        {
-          "type": "namespace",
-          "named": true
-        },
-        {
-          "type": "partial_dictionary",
-          "named": true
-        },
-        {
-          "type": "partial_interface",
-          "named": true
-        },
-        {
-          "type": "partial_namespace",
-          "named": true
-        },
-        {
-          "type": "typedef",
+          "type": "_definition",
           "named": true
         }
       ]
@@ -2450,52 +1648,12 @@
     "type": "static_member",
     "named": true,
     "fields": {
-      "body": {
-        "multiple": true,
+      "member": {
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "attribute",
-            "named": false
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "readonly",
-            "named": false
-          },
-          {
-            "type": "regular_operation",
-            "named": true
-          },
-          {
-            "type": "type_with_extended_attributes",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "type_with_extended_attributes",
+            "type": "_static_member_body",
             "named": true
           }
         ]
@@ -2510,34 +1668,23 @@
   {
     "type": "stringifier",
     "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "type_with_extended_attributes",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        }
+      ]
     }
   },
   {
     "type": "type_with_extended_attributes",
     "named": true,
     "fields": {
-      "attribute_list": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
@@ -2552,63 +1699,7 @@
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
-            "named": true
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "promise_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
-            "named": false
-          },
-          {
-            "type": "union_type",
+            "type": "_type",
             "named": true
           }
         ]
@@ -2619,7 +1710,7 @@
     "type": "typedef",
     "named": true,
     "fields": {
-      "attribute_list": {
+      "attributes": {
         "multiple": false,
         "required": false,
         "types": [
@@ -2655,64 +1746,16 @@
     "type": "union_type",
     "named": true,
     "fields": {
-      "options": {
+      "member_types": {
         "multiple": true,
         "required": true,
         "types": [
           {
-            "type": "any",
-            "named": false
-          },
-          {
-            "type": "buffer_related_type",
-            "named": true
-          },
-          {
-            "type": "frozen_array_type",
-            "named": true
-          },
-          {
-            "type": "identifier",
-            "named": true
-          },
-          {
-            "type": "nullable_type",
-            "named": true
-          },
-          {
-            "type": "object",
-            "named": false
-          },
-          {
-            "type": "observable_array_type",
+            "type": "_type",
             "named": true
           },
           {
             "type": "or",
-            "named": false
-          },
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "record_type",
-            "named": true
-          },
-          {
-            "type": "sequence_type",
-            "named": true
-          },
-          {
-            "type": "string_type",
-            "named": true
-          },
-          {
-            "type": "symbol",
-            "named": false
-          },
-          {
-            "type": "undefined",
             "named": false
           }
         ]
