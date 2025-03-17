@@ -1,10 +1,62 @@
 [
   {
+    "type": "float_literal",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "-Infinity",
+        "named": false
+      },
+      {
+        "type": "Infinity",
+        "named": false
+      },
+      {
+        "type": "NaN",
+        "named": false
+      },
+      {
+        "type": "decimal",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "primitive_type",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "bigint",
+        "named": false
+      },
+      {
+        "type": "boolean",
+        "named": false
+      },
+      {
+        "type": "byte",
+        "named": false
+      },
+      {
+        "type": "octet",
+        "named": false
+      },
+      {
+        "type": "unrestricted_float_type",
+        "named": true
+      },
+      {
+        "type": "unsigned_integer_type",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "argument",
     "named": true,
     "fields": {
       "default": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
@@ -42,7 +94,7 @@
         ]
       },
       "name": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -52,7 +104,7 @@
         ]
       },
       "optional": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
@@ -62,7 +114,7 @@
         ]
       },
       "type": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -134,7 +186,7 @@
     "named": true,
     "fields": {
       "arguments": {
-        "multiple": false,
+        "multiple": true,
         "required": false,
         "types": [
           {
@@ -343,132 +395,12 @@
     "type": "callback_interface_members",
     "named": true,
     "fields": {
-      "member": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "async_iterable",
-            "named": true
-          },
-          {
-            "type": "const",
-            "named": true
-          },
-          {
-            "type": "constructor",
-            "named": true
-          },
-          {
-            "type": "inherit_attribute",
-            "named": true
-          },
-          {
-            "type": "iterable",
-            "named": true
-          },
-          {
-            "type": "readonly_member",
-            "named": true
-          },
-          {
-            "type": "readwrite_attribute",
-            "named": true
-          },
-          {
-            "type": "readwrite_maplike",
-            "named": true
-          },
-          {
-            "type": "readwrite_setlike",
-            "named": true
-          },
-          {
-            "type": "regular_operation",
-            "named": true
-          },
-          {
-            "type": "special_operation",
-            "named": true
-          },
-          {
-            "type": "static_member",
-            "named": true
-          },
-          {
-            "type": "stringifier",
-            "named": true
-          }
-        ]
-      },
-      "member_attributes": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "extended_attribute_list",
-            "named": true
-          }
-        ]
-      },
       "members": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "async_iterable",
-            "named": true
-          },
-          {
-            "type": "const",
-            "named": true
-          },
-          {
-            "type": "constructor",
-            "named": true
-          },
-          {
-            "type": "extended_attribute_list",
-            "named": true
-          },
-          {
-            "type": "inherit_attribute",
-            "named": true
-          },
-          {
-            "type": "iterable",
-            "named": true
-          },
-          {
-            "type": "readonly_member",
-            "named": true
-          },
-          {
-            "type": "readwrite_attribute",
-            "named": true
-          },
-          {
-            "type": "readwrite_maplike",
-            "named": true
-          },
-          {
-            "type": "readwrite_setlike",
-            "named": true
-          },
-          {
-            "type": "regular_operation",
-            "named": true
-          },
-          {
-            "type": "special_operation",
-            "named": true
-          },
-          {
-            "type": "static_member",
-            "named": true
-          },
-          {
-            "type": "stringifier",
+            "type": "interface_member",
             "named": true
           }
         ]
@@ -944,21 +876,6 @@
     }
   },
   {
-    "type": "float_literal",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "decimal",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "float_type",
     "named": true,
     "fields": {}
@@ -1139,12 +1056,12 @@
     }
   },
   {
-    "type": "interface_members",
+    "type": "interface_member",
     "named": true,
     "fields": {
       "member": {
-        "multiple": true,
-        "required": false,
+        "multiple": false,
+        "required": true,
         "types": [
           {
             "type": "async_iterable",
@@ -1167,6 +1084,10 @@
             "named": true
           },
           {
+            "type": "maplike_rest",
+            "named": true
+          },
+          {
             "type": "readonly_member",
             "named": true
           },
@@ -1175,15 +1096,11 @@
             "named": true
           },
           {
-            "type": "readwrite_maplike",
-            "named": true
-          },
-          {
-            "type": "readwrite_setlike",
-            "named": true
-          },
-          {
             "type": "regular_operation",
+            "named": true
+          },
+          {
+            "type": "setlike_rest",
             "named": true
           },
           {
@@ -1201,7 +1118,7 @@
         ]
       },
       "member_attributes": {
-        "multiple": true,
+        "multiple": false,
         "required": false,
         "types": [
           {
@@ -1209,65 +1126,19 @@
             "named": true
           }
         ]
-      },
+      }
+    }
+  },
+  {
+    "type": "interface_members",
+    "named": true,
+    "fields": {
       "members": {
         "multiple": true,
         "required": false,
         "types": [
           {
-            "type": "async_iterable",
-            "named": true
-          },
-          {
-            "type": "const",
-            "named": true
-          },
-          {
-            "type": "constructor",
-            "named": true
-          },
-          {
-            "type": "extended_attribute_list",
-            "named": true
-          },
-          {
-            "type": "inherit_attribute",
-            "named": true
-          },
-          {
-            "type": "iterable",
-            "named": true
-          },
-          {
-            "type": "readonly_member",
-            "named": true
-          },
-          {
-            "type": "readwrite_attribute",
-            "named": true
-          },
-          {
-            "type": "readwrite_maplike",
-            "named": true
-          },
-          {
-            "type": "readwrite_setlike",
-            "named": true
-          },
-          {
-            "type": "regular_operation",
-            "named": true
-          },
-          {
-            "type": "special_operation",
-            "named": true
-          },
-          {
-            "type": "static_member",
-            "named": true
-          },
-          {
-            "type": "stringifier",
+            "type": "interface_member",
             "named": true
           }
         ]
@@ -1615,6 +1486,10 @@
             "named": true
           },
           {
+            "type": "maplike_rest",
+            "named": true
+          },
+          {
             "type": "readonly_member",
             "named": true
           },
@@ -1623,15 +1498,11 @@
             "named": true
           },
           {
-            "type": "readwrite_maplike",
-            "named": true
-          },
-          {
-            "type": "readwrite_setlike",
-            "named": true
-          },
-          {
             "type": "regular_operation",
+            "named": true
+          },
+          {
+            "type": "setlike_rest",
             "named": true
           },
           {
@@ -1695,51 +1566,25 @@
         "required": false,
         "types": [
           {
-            "type": ";",
-            "named": false
-          },
-          {
-            "type": "attribute",
-            "named": false
-          },
-          {
             "type": "const",
             "named": true
           },
           {
-            "type": "identifier",
+            "type": "readonly_member",
             "named": true
-          },
-          {
-            "type": "readonly",
-            "named": false
           },
           {
             "type": "regular_operation",
-            "named": true
-          },
-          {
-            "type": "type_with_extended_attributes",
             "named": true
           }
         ]
       },
       "name": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
             "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "type": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "type_with_extended_attributes",
             "named": true
           }
         ]
@@ -1883,7 +1728,7 @@
     }
   },
   {
-    "type": "partial",
+    "type": "partial_dictionary",
     "named": true,
     "fields": {
       "attribute_list": {
@@ -1895,31 +1740,7 @@
             "named": true
           }
         ]
-      }
-    },
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "namespace",
-          "named": true
-        },
-        {
-          "type": "partial_dictionary",
-          "named": true
-        },
-        {
-          "type": "partial_interface",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "partial_dictionary",
-    "named": true,
-    "fields": {
+      },
       "body": {
         "multiple": false,
         "required": true,
@@ -1946,32 +1767,16 @@
     "type": "partial_interface",
     "named": true,
     "fields": {
-      "body": {
+      "attribute_list": {
         "multiple": false,
-        "required": true,
+        "required": false,
         "types": [
           {
-            "type": "partial_interface_members",
+            "type": "extended_attribute_list",
             "named": true
           }
         ]
       },
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "partial_interface_members",
-    "named": true,
-    "fields": {
       "members": {
         "multiple": true,
         "required": false,
@@ -1993,6 +1798,10 @@
             "named": true
           },
           {
+            "type": "maplike_rest",
+            "named": true
+          },
+          {
             "type": "readonly_member",
             "named": true
           },
@@ -2001,15 +1810,11 @@
             "named": true
           },
           {
-            "type": "readwrite_maplike",
-            "named": true
-          },
-          {
-            "type": "readwrite_setlike",
-            "named": true
-          },
-          {
             "type": "regular_operation",
+            "named": true
+          },
+          {
+            "type": "setlike_rest",
             "named": true
           },
           {
@@ -2025,26 +1830,61 @@
             "named": true
           }
         ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
       }
     }
   },
   {
-    "type": "primitive_type",
+    "type": "partial_namespace",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "unrestricted_float_type",
-          "named": true
-        },
-        {
-          "type": "unsigned_integer_type",
-          "named": true
-        }
-      ]
+    "fields": {
+      "attribute_list": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "extended_attribute_list",
+            "named": true
+          }
+        ]
+      },
+      "members": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "const",
+            "named": true
+          },
+          {
+            "type": "readonly_member",
+            "named": true
+          },
+          {
+            "type": "regular_operation",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -2123,6 +1963,36 @@
     "type": "readonly_member",
     "named": true,
     "fields": {
+      "member": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": ";",
+            "named": false
+          },
+          {
+            "type": "attribute",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "maplike_rest",
+            "named": true
+          },
+          {
+            "type": "setlike_rest",
+            "named": true
+          },
+          {
+            "type": "type_with_extended_attributes",
+            "named": true
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": false,
@@ -2143,20 +2013,6 @@
           }
         ]
       }
-    },
-    "children": {
-      "multiple": false,
-      "required": false,
-      "types": [
-        {
-          "type": "maplike_rest",
-          "named": true
-        },
-        {
-          "type": "setlike_rest",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -2183,36 +2039,6 @@
           }
         ]
       }
-    }
-  },
-  {
-    "type": "readwrite_maplike",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "maplike_rest",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "readwrite_setlike",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "setlike_rest",
-          "named": true
-        }
-      ]
     }
   },
   {
@@ -2571,7 +2397,15 @@
           "named": true
         },
         {
-          "type": "partial",
+          "type": "partial_dictionary",
+          "named": true
+        },
+        {
+          "type": "partial_interface",
+          "named": true
+        },
+        {
+          "type": "partial_namespace",
           "named": true
         },
         {
@@ -2888,16 +2722,17 @@
   {
     "type": "unrestricted_float_type",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": false,
-      "required": true,
-      "types": [
-        {
-          "type": "float_type",
-          "named": true
-        }
-      ]
+    "fields": {
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "float_type",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {

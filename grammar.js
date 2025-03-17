@@ -23,6 +23,8 @@ module.exports = grammar({
 
   word: ($) => $.identifier,
 
+  supertypes: ($) => [$.primitive_type, $.float_literal],
+
   rules: {
     source: ($) => repeat($._definition),
 
@@ -35,7 +37,7 @@ module.exports = grammar({
           $.interface,
           $.mixin,
           $.namespace,
-          $.partial,
+          $._partial,
           $.dictionary,
           $.enum,
           $.typedef,
@@ -73,15 +75,15 @@ module.exports = grammar({
     _inheritance: ($) => seq(":", field("super", $.identifier)),
 
     interface_members: ($) =>
-      seq("{", field("members", repeat($._interface_member)), "}", ";"),
+      seq("{", field("members", repeat($.interface_member)), "}", ";"),
 
     callback_interface_members: ($) =>
-      seq("{", field("members", repeat($._interface_member)), "}", ";"),
+      seq("{", field("members", repeat($.interface_member)), "}", ";"),
 
     mixin_members: ($) =>
       seq("{", field("members", repeat($.mixin_member)), "}", ";"),
 
-    _interface_member: ($) =>
+    interface_member: ($) =>
       seq(
         field("member_attributes", optional($.extended_attribute_list)),
         field(
@@ -95,8 +97,8 @@ module.exports = grammar({
             $.async_iterable,
             $.readonly_member,
             $.readwrite_attribute,
-            $.readwrite_maplike,
-            $.readwrite_setlike,
+            $._readwrite_maplike,
+            $._readwrite_setlike,
             $.inherit_attribute,
             $.constructor
           )
@@ -117,8 +119,8 @@ module.exports = grammar({
             $.async_iterable,
             $.readonly_member,
             $.readwrite_attribute,
-            $.readwrite_maplike,
-            $.readwrite_setlike,
+            $._readwrite_maplike,
+            $._readwrite_setlike,
             $.inherit_attribute,
             $.constructor
           )
@@ -137,22 +139,34 @@ module.exports = grammar({
       ),
 
     _namespace_member: ($) =>
-      choice($.regular_operation, seq("readonly", $._attribute_rest), $.const),
+      choice($.regular_operation, $.readonly_member, $.const),
 
-    partial: ($) => seq(attribute_list($), "partial", $._partial_definition),
+    _partial: ($) =>
+      choice($.partial_interface, $.partial_dictionary, $.partial_namespace),
 
-    _partial_definition: ($) =>
-      choice($.partial_interface, $.partial_dictionary, $.namespace),
+    partial_namespace: ($) =>
+      seq(
+        attribute_list($),
+        "partial",
+        "namespace",
+        field("name", $.identifier),
+        "{",
+        field("members", repeat($._namespace_member)),
+        "}",
+        ";"
+      ),
 
     partial_interface: ($) =>
       seq(
+        attribute_list($),
+        "partial",
         "interface",
         field("name", $.identifier),
-        field("body", $.partial_interface_members)
+        "{",
+        field("members", repeat($._partial_interface_member)),
+        "}",
+        ";"
       ),
-
-    partial_interface_members: ($) =>
-      seq("{", field("members", repeat($._partial_interface_member)), "}", ";"),
 
     _partial_interface_member: ($) =>
       choice(
@@ -164,8 +178,8 @@ module.exports = grammar({
         $.async_iterable,
         $.readonly_member,
         $.readwrite_attribute,
-        $.readwrite_maplike,
-        $.readwrite_setlike,
+        $._readwrite_maplike,
+        $._readwrite_setlike,
         $.inherit_attribute
       ),
 
@@ -195,6 +209,8 @@ module.exports = grammar({
 
     partial_dictionary: ($) =>
       seq(
+        attribute_list($),
+        "partial",
         "dictionary",
         field("name", $.identifier),
         field("body", $.dictionary_members)
@@ -256,7 +272,8 @@ module.exports = grammar({
 
     float_literal: ($) => choice($.decimal, "-Infinity", "Infinity", "NaN"),
 
-    readonly_member: ($) => seq("readonly", $._readonly_member_rest),
+    readonly_member: ($) =>
+      seq("readonly", field("member", $._readonly_member_rest)),
 
     _readonly_member_rest: ($) =>
       choice($._attribute_rest, $.maplike_rest, $.setlike_rest),
@@ -292,28 +309,13 @@ module.exports = grammar({
       seq("constructor", field("arguments", $.argument_list), ";"),
 
     argument_list: ($) =>
-      prec.right(
-        PREC.ARG_LIST,
-        seq("(", field("arguments", optional($.argument)), ")")
-      ),
-
+      seq("(", commaList(field("arguments", optional($.argument))), ")"),
     argument: ($) =>
       seq(
         field("optional", optional("optional")),
         field("type", $._type),
         field("name", $.identifier),
-        optional(seq("=", field("default", $._default_value))),
-        repeat(
-          seq(
-            ",",
-            seq(
-              field("optional", optional("optional")),
-              field("type", $._type),
-              field("name", $.identifier),
-              optional(seq("=", field("default", $._default_value)))
-            )
-          )
-        )
+        optional(seq("=", field("default", $._default_value)))
       ),
 
     _default_value: ($) =>
@@ -367,7 +369,7 @@ module.exports = grammar({
         ";"
       ),
 
-    readwrite_maplike: ($) => $.maplike_rest,
+    _readwrite_maplike: ($) => $.maplike_rest,
 
     maplike_rest: ($) =>
       seq(
@@ -380,7 +382,7 @@ module.exports = grammar({
         ";"
       ),
 
-    readwrite_setlike: ($) => $.setlike_rest,
+    _readwrite_setlike: ($) => $.setlike_rest,
 
     setlike_rest: ($) => seq("setlike", "<", field("value", $._type), ">", ";"),
 
@@ -433,7 +435,8 @@ module.exports = grammar({
 
     integer_type: ($) => choice("short", seq("long", optional("long"))),
 
-    unrestricted_float_type: ($) => seq("unrestricted", $.float_type),
+    unrestricted_float_type: ($) =>
+      seq("unrestricted", field("type", $.float_type)),
 
     float_type: ($) => choice("float", "double"),
 
@@ -554,6 +557,10 @@ module.exports = grammar({
     comment: ($) => /\/\/.*|\/\*[^*]*(\*+[^/*][^*]*)*\*+\//,
   },
 });
+
+function commaList(g) {
+  return seq(g, repeat(seq(",", g)));
+}
 
 function attribute_list($) {
   return field("attribute_list", optional($.extended_attribute_list));
