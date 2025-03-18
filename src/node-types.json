@@ -430,16 +430,16 @@
         "named": false
       },
       {
+        "type": "float_type",
+        "named": true
+      },
+      {
+        "type": "integer_type",
+        "named": true
+      },
+      {
         "type": "octet",
         "named": false
-      },
-      {
-        "type": "unrestricted_float_type",
-        "named": true
-      },
-      {
-        "type": "unsigned_integer_type",
-        "named": true
       }
     ]
   },
@@ -998,7 +998,32 @@
   {
     "type": "float_type",
     "named": true,
-    "fields": {}
+    "fields": {
+      "base": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "double",
+            "named": false
+          },
+          {
+            "type": "float",
+            "named": false
+          }
+        ]
+      },
+      "unrestricted": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "unrestricted",
+            "named": false
+          }
+        ]
+      }
+    }
   },
   {
     "type": "frozen_array_type",
@@ -1045,7 +1070,32 @@
   {
     "type": "integer_type",
     "named": true,
-    "fields": {}
+    "fields": {
+      "base": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "long",
+            "named": false
+          },
+          {
+            "type": "short",
+            "named": false
+          }
+        ]
+      },
+      "unsigned": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "unsigned",
+            "named": false
+          }
+        ]
+      }
+    }
   },
   {
     "type": "interface",
@@ -1757,38 +1807,6 @@
           {
             "type": "or",
             "named": false
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "unrestricted_float_type",
-    "named": true,
-    "fields": {
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "float_type",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "unsigned_integer_type",
-    "named": true,
-    "fields": {
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "integer_type",
-            "named": true
           }
         ]
       }

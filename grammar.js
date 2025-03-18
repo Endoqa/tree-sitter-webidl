@@ -151,8 +151,7 @@ module.exports = grammar({
         ";"
       ),
 
-    _namespace_member: ($) =>
-      choice($.regular_operation, $.attribute, $.const),  // Use the unified attribute rule
+    _namespace_member: ($) => choice($.regular_operation, $.attribute, $.const), // Use the unified attribute rule
 
     _partial: ($) =>
       choice($.partial_interface, $.partial_dictionary, $.partial_namespace),
@@ -292,14 +291,13 @@ module.exports = grammar({
 
     attribute: ($) =>
       seq(
-        optional(field("inherit", "inherit")),  // "inherit" is just another modifier
+        optional(field("inherit", "inherit")), // "inherit" is just another modifier
         optional(field("readonly", "readonly")),
         "attribute",
         field("type", $.type_with_extended_attributes),
         field("name", $.identifier),
         ";"
       ),
-
 
     // Operations
     regular_operation: ($) =>
@@ -357,15 +355,14 @@ module.exports = grammar({
     stringifier: ($) =>
       seq(
         "stringifier",
-        choice($.attribute, ";"),  // Use the unified attribute
+        choice($.attribute, ";"), // Use the unified attribute
         optional(";")
       ),
 
     // Static Members
     static_member: ($) => seq("static", field("member", $._static_member_body)),
 
-    _static_member_body: ($) =>
-      choice($.attribute, $.regular_operation), // Use the unified attribute
+    _static_member_body: ($) => choice($.attribute, $.regular_operation), // Use the unified attribute
 
     // Iterables
     iterable: ($) =>
@@ -391,9 +388,8 @@ module.exports = grammar({
       ),
 
     // Maplike and Setlike
-    _maplike: ($) => $.maplike,   // Simplified maplike
+    _maplike: ($) => $.maplike, // Simplified maplike
     _setlike: ($) => $.setlike, // Simplified setlike
-
 
     maplike: ($) =>
       seq(
@@ -408,8 +404,14 @@ module.exports = grammar({
       ),
 
     setlike: ($) =>
-      seq(optional(field("readonly", "readonly")), "setlike", "<", field("value_type", $._type), ">", ";"),
-
+      seq(
+        optional(field("readonly", "readonly")),
+        "setlike",
+        "<",
+        field("value_type", $._type),
+        ">",
+        ";"
+      ),
 
     // Types
     _type: ($) =>
@@ -445,23 +447,25 @@ module.exports = grammar({
 
     primitive_type: ($) =>
       choice(
-        $.unsigned_integer_type,
-        $.unrestricted_float_type,
+        $.integer_type,
+        $.float_type,
         "boolean",
         "byte",
         "octet",
         "bigint"
       ),
 
-    unsigned_integer_type: ($) =>
-      seq("unsigned", field("type", $.integer_type)),
+    integer_type: ($) =>
+      seq(
+        optional(field("unsigned", "unsigned")),
+        field("base", choice("short", seq("long", optional("long"))))
+      ),
 
-    integer_type: ($) => choice("short", seq("long", optional("long"))),
-
-    unrestricted_float_type: ($) =>
-      seq("unrestricted", field("type", $.float_type)),
-
-    float_type: ($) => choice("float", "double"),
+    float_type: ($) =>
+      seq(
+        optional(field("unrestricted", "unrestricted")),
+        field("base", choice("float", "double"))
+      ),
 
     string_type: ($) => choice("ByteString", "DOMString", "USVString"),
 
