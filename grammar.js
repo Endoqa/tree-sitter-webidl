@@ -439,7 +439,10 @@ module.exports = grammar({
         PREC.UNION,
         seq(
           "(",
-          field("member_types", seq($._type, repeat1(seq("or", $._type)))),
+          seq(
+            field("member_types", $._type),
+            repeat1(seq("or", field("member_types", $._type)))
+          ),
           ")",
           optional("?")
         )
@@ -458,8 +461,10 @@ module.exports = grammar({
     integer_type: ($) =>
       seq(
         optional(field("unsigned", "unsigned")),
-        field("base", choice("short", seq("long", optional("long"))))
+        field("base", $.base_integer_type)
       ),
+
+    base_integer_type: ($) => choice("short", seq("long", optional("long"))),
 
     float_type: ($) =>
       seq(

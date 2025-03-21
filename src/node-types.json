@@ -578,6 +578,11 @@
     }
   },
   {
+    "type": "base_integer_type",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "boolean_literal",
     "named": true,
     "fields": {}
@@ -1072,16 +1077,12 @@
     "named": true,
     "fields": {
       "base": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "long",
-            "named": false
-          },
-          {
-            "type": "short",
-            "named": false
+            "type": "base_integer_type",
+            "named": true
           }
         ]
       },
@@ -1803,10 +1804,6 @@
           {
             "type": "_type",
             "named": true
-          },
-          {
-            "type": "or",
-            "named": false
           }
         ]
       }
